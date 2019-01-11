@@ -1,0 +1,373 @@
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+
+$font-exo: 'Exo2.0-Thin', Arial, sans-serif;
+$font-trebuchet: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode',
+'Lucida Sans', Tahoma, sans-serif;
+
+$font-title: $font-exo;
+$font-main: $font-trebuchet;
+
+$color-white: #fff;
+$color-cod-gray: #171717;
+$color-black: #000;
+$color-dove-gray: #666;
+$color-yellow: #ffff66;
+$color-concrete: #f2f2f2;
+$color-nobel: #b3b3b3;
+$color-mercury: #e4e4e4;
+$color-curious-blue: #1698d9;
+$color-picton-blue: #2ea8e6;
+$color-razzmatazz: #d91667;
+$color-cerise-red: #e62e7a;
+
+$pallete-body-text: $color-white;
+$pallete-body-background: $color-cod-gray;
+$pallete-card-text-primary: $color-black;
+$pallete-card-text-secondary: $color-dove-gray;
+$pallete-card-background: $color-concrete;
+$pallete-disabled-text: $color-yellow;
+$pallete-disabled-dark: $color-nobel;
+$pallete-disabled-light: $color-mercury;
+$pallete-default: $color-curious-blue;
+$pallete-default-hover: $color-picton-blue;
+$pallete-selected: $color-razzmatazz;
+$pallete-selected-hover:  $color-cerise-red;
+
+html,
+body {
+  height: 100%;
+}
+
+.page {
+    margin: 0;
+    padding: 0;
+    min-width: 320px;
+    font-family: $font-main;
+    font-size: 16px;
+    color: $pallete-body-text;
+    background-color: $pallete-body-background;
+    background-image: linear-gradient( to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.5) 100%), url("../img/pattern.png");
+    background-size: auto;
+    box-sizing: border-box;
+    @media (min-width: 1200px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__wrapper {
+        padding: 20px 10px;
+        @media (min-width: 1200px) {
+            width: 100%;
+            padding: 0;
+        }
+    }
+    &__title {
+        margin: 0;
+        margin-bottom: 23px;
+        font-family: $font-title;
+        font-weight: 100;
+        font-size: 36px;
+        line-height: 1.2;
+        text-align: center;
+        text-shadow: 0 1px 1px $pallete-card-text-primary;
+    }
+    &__cards-box {
+        text-align: center;
+        @media screen and (min-width: 768px) {
+            display: grid;
+            grid-template-columns: repeat(2, 320px);
+            justify-content: center;
+            grid-gap: 26px;
+            &>* {
+                display: inline-block;
+                margin: 0 20px;
+                margin-bottom: 26px;
+                width: 320px;
+                vertical-align: top;
+            }
+            @supports (display: grid) {
+                &>* {
+                    width: auto;
+                    margin: 0;
+                }
+            }
+        }
+        @media (min-width: 1200px) {
+            grid-template-columns: repeat(3, 320px);
+            grid-gap: 80px;
+        }
+    }
+    &__card-box-wrapper {
+        &:last-child:nth-child(odd) {
+            grid-column: 1 / 3;
+            @media (min-width: 1200px) {
+                grid-column: 3 / 4;
+            }
+        }
+    }
+    &__card-box {
+        width: 100%;
+        max-width: 320px;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        padding-bottom: 20px;
+        &:hover {
+            .card__description-background {
+                stroke: $pallete-default-hover;
+            }
+            .card__description-weight {
+                background-color: $pallete-default-hover;
+            }
+            .label {
+                color: $pallete-default-hover;
+                border-bottom: 1px dashed $pallete-default-hover;
+            }
+        }
+        @media  screen and (min-width: 768px) {
+            margin: 0 auto;
+        }
+    }
+    &__card-heading {
+        margin: 10px 0;
+        margin-top: 13px;
+        font-weight: $font-weight-normal;
+        font-size: 13px;
+        line-height: 16px;
+        color: $pallete-body-text;
+        text-align: center;
+        order: 2;
+    }
+}
+
+.card {
+    position: relative;
+    box-sizing: border-box;
+    min-height: 480px;
+    padding-top: 20px;
+    padding-right: 15px;
+    padding-left: 48px;
+    text-align: left;
+    flex-grow: 1;
+    background-image: url("../img/photoCat.png");
+    background-repeat: no-repeat;
+    background-position: left 4px bottom 4px;
+    background-size: 312px 270px;
+    cursor: pointer;
+    &__caption {
+        display: inline-block;
+        margin: 0;
+        margin-bottom: 7px;
+        font-size: 16px;
+        font-weight: $font-weight-normal;
+        color: $pallete-card-text-secondary;
+        vertical-align: middle;
+    }
+    &__description-title {
+        margin: 0;
+        margin-bottom: 0;
+        font-size: 48px;
+        font-weight: $font-weight-bold;
+        color: $pallete-card-text-primary;
+    }
+    &__description-subtitle {
+        display: block;
+        margin: 0;
+        margin-bottom: 16px;
+        font-size: 24px;
+        font-weight: $font-weight-bold;
+        color: $pallete-card-text-primary;
+    }
+    &__description-texts {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        padding-bottom: 275px;
+        margin: 0;
+        font-size: 14px;
+        font-weight: $font-weight-normal;
+        color: $pallete-card-text-secondary;
+    }
+    &__description-text {
+        padding: 0;
+        margin: 0;
+    }
+    &__description-weight {
+        position: absolute;
+        bottom: -28px;
+        right: 15px;
+        z-index: 1;
+        width: 80px;
+        height: 80px;
+        padding: 10px;
+        font-weight: $font-weight-normal;
+        font-size: 42px;
+        line-height: 1;
+        border-radius: 50%;
+        background-color: $pallete-default;
+        color: $pallete-body-text;
+        text-align: center;
+        box-sizing: border-box;
+    }
+    &__description-kilo {
+        display: block;
+        font-size: 21px;
+    }
+    &__description-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        fill: $pallete-card-background;
+        stroke: $pallete-default;
+    }
+}
+
+.caption-under-card {
+    margin: 10px 0;
+    margin-top: 15px;
+    font-weight: $font-weight-normal;
+    font-size: 13px;
+    line-height: 16px;
+    color: $pallete-body-text;
+    text-align: center;
+}
+
+.form {
+    font-family: $font-main;
+    font-size: 16px;
+    line-height: 1.2;
+    color: $pallete-body-text;
+    box-sizing: border-box;
+}
+
+.label {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: $font-weight-bold;
+    color: $pallete-default;
+    text-decoration: none;
+    border-bottom: 1px dashed $pallete-default;
+    cursor: pointer;
+    position: relative;
+    &::after {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 31px;
+        width: 2px;
+        height: 2px;
+        background-color: $pallete-default;
+    }
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(1px, 1px, 1px, 1px);
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.is-selected {
+    .card {
+      & .card__description-background {
+        stroke: $pallete-selected;
+      }
+  
+      .card__description-weight {
+        background-color: $pallete-selected;
+      }
+  
+      &:hover {
+        .card__caption-default {
+          display: none;
+        }
+  
+        .card__caption-selected {
+          display: block;
+        }
+  
+        .card__description-background {
+          stroke: $pallete-selected-hover;
+        }
+  
+        .card__description-weight {
+          background-color: $pallete-selected-hover;
+        }
+      }
+    }
+  }
+
+
+  .is-selected-hover {
+    .card {
+      &::before {
+        content: "Котэ не одобряет?";
+        display: none;
+        margin: 0;
+        margin-bottom: 7px;
+        z-index: 1;
+        font-size: 16px;
+        color: $pallete-selected-hover;
+        box-sizing: border-box;
+      }
+    }
+  
+    &:hover {
+      .card__caption {
+        display: none;
+      }
+  
+      .card {
+        &::before {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .is-disabled {
+    pointer-events: none;
+  
+    & .card__description-background {
+      stroke: $pallete-disabled-dark;
+      fill: $pallete-disabled-light;
+    }
+  
+    & .card {
+      cursor: default;
+  
+      &::before {
+        content: "";
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        bottom: 4px;
+        left: 4px;
+        background-color: $pallete-disabled-light;
+        border-radius: 10px;
+        border-top-left-radius: 83px;
+        opacity: 0.6;
+      }
+    }
+  
+    & .caption-under-card {
+      color: $pallete-disabled-text;
+    }
+  
+    & .card__description-weight {
+      background-color:  $pallete-disabled-dark;
+    }
+  }
+
+@font-face {
+    font-family: "Exo2.0-Thin";
+    src: url("../fonts/Exo20-Thin.woff") format("woff"), url("../fonts/Exo20-Thin.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
