@@ -120,7 +120,7 @@ body {
             .card__description-weight {
                 background-color: $pallete-default-hover;
             }
-            .label {
+            .caption-under-card__to-buy {
                 color: $pallete-default-hover;
                 border-bottom: 1px dashed $pallete-default-hover;
             }
@@ -234,6 +234,25 @@ body {
     line-height: 16px;
     color: $pallete-body-text;
     text-align: center;
+    &__to-buy {
+        font-size: 13px;
+        line-height: 16px;
+        font-weight: $font-weight-bold;
+        color: $pallete-default;
+        text-decoration: none;
+        border-bottom: 1px dashed $pallete-default;
+        cursor: pointer;
+        position: relative;
+        &::after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 31px;
+            width: 2px;
+            height: 2px;
+            background-color: $pallete-default;
+        }
+    }
 }
 
 .form {
@@ -242,26 +261,6 @@ body {
     line-height: 1.2;
     color: $pallete-body-text;
     box-sizing: border-box;
-}
-
-.label {
-    font-size: 13px;
-    line-height: 16px;
-    font-weight: $font-weight-bold;
-    color: $pallete-default;
-    text-decoration: none;
-    border-bottom: 1px dashed $pallete-default;
-    cursor: pointer;
-    position: relative;
-    &::after {
-        content: "";
-        position: absolute;
-        top: 10px;
-        left: 31px;
-        width: 2px;
-        height: 2px;
-        background-color: $pallete-default;
-    }
 }
 
 .visually-hidden {

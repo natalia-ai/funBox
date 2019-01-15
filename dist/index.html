@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fff">
   <meta name="format-detection" content="telephone=no">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/style.min.css">
 </head>
 
 <body class="page">
@@ -17,7 +17,7 @@
     <p class="page__title">Ты сегодня покормил кота?</p>
     <section class="page__cards-box">
       <div class="page__card-box-wrapper">
-        <section class="page__card-box" data-disabled="Печалька, с фуа-гра закончился.">
+        <section id="card-id1" class="page__card-box" data-disabled="Печалька, с фуа-гра закончился.">
           <h2 class="page__card-heading visually-hidden">Печень утки разварная с артишоками.</h2>
           <article class="card">
             <p class="card__caption">Сказочное заморское яство</p>
@@ -36,15 +36,13 @@
           </article>
           <p class="caption-under-card">
             Чего сидишь? Порадуй котэ,
-            <label class="label" for="foiegras">
-              купи
-              <input class="visually-hidden" type="checkbox" name="foiegras" value="foiegras" id="foiegras">
-            </label>
+            <a class="caption-under-card__to-buy"> купи</a>
+              <input class="visually-hidden" name="foiegras" value="foiegras">
           </p>
         </section>
       </div>
       <div class="page__card-box-wrapper">
-        <section class="page__card-box is-selected" data-disabled="Печалька, с рыбой закончился.">
+        <section id="card-id2" class="page__card-box is-selected" data-disabled="Печалька, с рыбой закончился.">
           <h2 class="page__card-heading">Головы щучьи с чесноком да свежайшая сёмгушка.</h2>
           <article class="card">
             <div class="card__header card__header--selected">
@@ -67,15 +65,13 @@
           </article>
           <p class="caption-under-card visually-hidden">
             Чего сидишь? Порадуй котэ,
-            <label class="label" for="fish">
-              купи
-              <input class="visually-hidden" type="checkbox" name="fish" value="fish" id="fish" selected>
-            </label>
+            <a class="caption-under-card__to-buy"> купи</a>
+            <input class="visually-hidden" name="fish" value="fish" selected>
           </p>
         </section>
       </div>
       <div class="page__card-box-wrapper">
-        <section class="page__card-box" data-disabled="Печалька, с курой закончился.">
+        <section id="card-id3" class="page__card-box" data-disabled="Печалька, с курой закончился.">
           <h2 class="page__card-heading visually-hidden">Филе из цыплят с трюфелями в бульоне.</h2>
           <article class="card">
             <div class="card__header">
@@ -99,16 +95,14 @@
           </article>
           <p class="caption-under-card">
             Чего сидишь? Порадуй котэ,
-            <label class="label" for="hun">
-              купи
-              <input class="visually-hidden" type="checkbox" name="hun" value="hun" id="hun" disabled>
-            </label>
+            <a class="caption-under-card__to-buy"> купи</a>
+              <input class="visually-hidden" name="hun" value="hun" disabled>
           </p>
         </section>
       </div>
     </section>
     <button class="visually-hidden">Оформить заказ</button>
   </form>
-  <script src="js/main.js"></script>
+  <script src="js/index.js"></script>
 </body>
 </html>
