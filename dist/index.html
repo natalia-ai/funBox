@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fff">
   <meta name="format-detection" content="telephone=no">
+  <script crs="https://yastatic.net/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="css/style.min.css">
 </head>
 
@@ -16,93 +17,38 @@
     <h1 class="visually-hidden">Корм для кошек</h1>
     <p class="page__title">Ты сегодня покормил кота?</p>
     <section class="page__cards-box">
-      <div class="page__card-box-wrapper">
-        <section id="card-id1" class="page__card-box" data-disabled="Печалька, с фуа-гра закончился.">
-          <h2 class="page__card-heading visually-hidden">Печень утки разварная с артишоками.</h2>
-          <article class="card">
-            <p class="card__caption">Сказочное заморское яство</p>
-            <h3 class="card__description-title">Нямушка</h3>
-            <h4 class="card__description-subtitle">с фуа-гра</h4>
-            <div class="card__description-texts">
-              <p class="card__description-text"><b>10</b> порций</p>
-              <p class="card__description-text">мышь в подарок</p>
-            </div>
-            <p class="card__description-weight">0,5
-              <span class="card__description-kilo">кг</span>
-            </p>
-            <svg class="card__description-background" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 324 484"
-              width="0" height="0" preserveAspectRatio="none">
-              <path fill-rule="evenodd" stroke-width="4" d="M310 482H14c-6.63 0-12-5.37-12-12V45L45 2h265c6.63 0 12 5.37 12 12v456c0 6.63-5.37 12-12 12z" /></svg>
-          </article>
-          <p class="caption-under-card">
-            Чего сидишь? Порадуй котэ,
-            <a class="caption-under-card__to-buy"> купи</a>
-              <input class="visually-hidden" name="foiegras" value="foiegras">
-          </p>
-        </section>
-      </div>
-      <div class="page__card-box-wrapper">
-        <section id="card-id2" class="page__card-box is-selected" data-disabled="Печалька, с рыбой закончился.">
-          <h2 class="page__card-heading">Головы щучьи с чесноком да свежайшая сёмгушка.</h2>
-          <article class="card">
-            <div class="card__header card__header--selected">
-              <p class="card__caption">Сказочное заморское яство</p>
-            </div>
-            <div class="card__content card__content--selected">
-              <h3 class="card__description-title">Нямушка</h3>
-              <h4 class="card__description-subtitle">с рыбой</h4>
-              <div class="card__description-texts">
-                <p class="card__description-text"><b>40</b> порций</p>
-                <p class="card__description-text"><b>2</b> мыши в подарок</p>
-              </div>
-              <p class="card__description-weight">2
-                <span class="card__description-kilo">кг</span>
-              </p>
-              <svg class="card__description-background" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 324 484"
-                width="0" height="0" preserveAspectRatio="none">
-                <path fill-rule="evenodd" stroke-width="4" d="M310 482H14c-6.63 0-12-5.37-12-12V45L45 2h265c6.63 0 12 5.37 12 12v456c0 6.63-5.37 12-12 12z" /></svg>
-            </div>
-          </article>
-          <p class="caption-under-card visually-hidden">
-            Чего сидишь? Порадуй котэ,
-            <a class="caption-under-card__to-buy"> купи</a>
-            <input class="visually-hidden" name="fish" value="fish" selected>
-          </p>
-        </section>
-      </div>
-      <div class="page__card-box-wrapper">
-        <section id="card-id3" class="page__card-box" data-disabled="Печалька, с курой закончился.">
-          <h2 class="page__card-heading visually-hidden">Филе из цыплят с трюфелями в бульоне.</h2>
-          <article class="card">
-            <div class="card__header">
-              <p class="card__caption">Сказочное заморское яство</p>
-            </div>
-            <div class="card__content">
-              <h3 class="card__description-title">Нямушка</h3>
-              <h4 class="card__description-subtitle">с курой</h4>
-              <div class="card__description-texts">
-                <p class="card__description-text"><b>100</b> порций</p>
-                <p class="card__description-text"><b>5</b> мышей в подарок</p>
-                <p class="card__description-text">заказчик доволен</p>
-              </div>
-              <p class="card__description-weight">5
-                <span class="card__description-kilo">кг</span>
-              </p>
-              <svg class="card__description-background" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 324 484"
-                width="0" height="0" preserveAspectRatio="none">
-                <path fill-rule="evenodd" stroke-width="4" d="M310 482H14c-6.63 0-12-5.37-12-12V45L45 2h265c6.63 0 12 5.37 12 12v456c0 6.63-5.37 12-12 12z" /></svg>
-            </div>
-          </article>
-          <p class="caption-under-card">
-            Чего сидишь? Порадуй котэ,
-            <a class="caption-under-card__to-buy"> купи</a>
-              <input class="visually-hidden" name="hun" value="hun" disabled>
-          </p>
-        </section>
-      </div>
     </section>
     <button class="visually-hidden">Оформить заказ</button>
   </form>
+ 
+  <template id="template-card">
+    <div class="page__card-box-wrapper">
+      <section class="page__card-box" data-disabled="Печалька, с фуа-гра закончился.">
+        <h2 class="page__card-heading visually-hidden">Печень утки разварная с артишоками.</h2>
+        <article class="card">
+          <p class="card__caption">Сказочное заморское яство</p>
+          <h3 class="card__description-title">Нямушка</h3>
+          <h4 class="card__description-subtitle">с фуа-гра</h4>
+          <div class="card__description-texts">
+            <p class="card__description-text card__description-text--portion"></p>
+            <p class="card__description-text card__description-text--bonus"></p>
+          </div>
+          <p class="card__description-weight">
+            <span class="card__description-kilo">кг</span>
+          </p>
+          <svg class="card__description-background" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 324 484"
+            width="0" height="0" preserveAspectRatio="none">
+            <path fill-rule="evenodd" stroke-width="4" d="M310 482H14c-6.63 0-12-5.37-12-12V45L45 2h265c6.63 0 12 5.37 12 12v456c0 6.63-5.37 12-12 12z" /></svg>
+        </article>
+        <p class="caption-under-card">
+          Чего сидишь? Порадуй котэ,
+          <a class="caption-under-card__to-buy"> купи</a>
+          <input class="visually-hidden" name="foiegras" value="foiegras">
+        </p>
+      </section>
+    </div>
+  </template>
   <script src="js/index.js"></script>
 </body>
+
 </html>
