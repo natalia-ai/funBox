@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fff">
   <meta name="format-detection" content="telephone=no">
-  <script crs="https://yastatic.net/jquery/3.3.1/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <link rel="stylesheet" href="css/style.min.css">
 </head>
 
@@ -21,11 +21,11 @@
     <button class="visually-hidden">Оформить заказ</button>
   </form>
  
-  <template id="template-card">
+  <div id="template-card" style="display:none">
     <div class="page__card-box-wrapper">
-      <section class="page__card-box" data-disabled="Печалька, с фуа-гра закончился.">
-        <h2 class="page__card-heading visually-hidden">Печень утки разварная с артишоками.</h2>
-        <article class="card">
+      <section class="page__card-box">
+        <h2 class="page__card-heading visually-hidden"></h2>
+        <article class="card" data-disabled="Печалька, с фуа-гра закончился." data-selected="Печень утки разварная с артишоками.">
           <p class="card__caption">Сказочное заморское яство</p>
           <h3 class="card__description-title">Нямушка</h3>
           <h4 class="card__description-subtitle">с фуа-гра</h4>
@@ -42,12 +42,12 @@
         </article>
         <p class="caption-under-card">
           Чего сидишь? Порадуй котэ,
-          <a class="caption-under-card__to-buy"> купи</a>
-          <input class="visually-hidden" name="foiegras" value="foiegras">
+          <label for="foiegras" class="caption-under-card__to-buy"> купи 
+            <input class="visually-hidden" type="checkbox" id="foiegras" name="" value=""></label>
         </p>
       </section>
     </div>
-  </template>
+  </div>
   <script src="js/index.js"></script>
 </body>
 

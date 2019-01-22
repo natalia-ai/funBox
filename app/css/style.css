@@ -247,6 +247,20 @@ body {
   overflow: hidden;
   white-space: nowrap; }
 
+.is-selected .card::after {
+  content: attr(data-selected);
+  position: absolute;
+  width: 320px;
+  margin: 0;
+  margin-left: -160px;
+  top: 495px;
+  left: 50%;
+  z-index: 100;
+  font-size: 13px;
+  text-align: center;
+  font-weight: 400;
+  color: #fff; }
+
 .is-selected .card .card__description-background {
   stroke: #d91667; }
 
@@ -264,6 +278,11 @@ body {
 
 .is-selected .card:hover .card__description-weight {
   background-color: #e62e7a; }
+
+.is-selected .caption-under-card {
+  visibility: hidden;
+  height: 0;
+  margin-top: 8px; }
 
 .is-selected-hover .card::before {
   content: "Котэ не одобряет?";
@@ -302,8 +321,17 @@ body {
       -webkit-border-top-left-radius: 83px;
               border-top-left-radius: 83px;
       opacity: 0.6; }
+    .is-disabled .card::after {
+      content: attr(data-disabled);
+      position: absolute;
+      top: 495px;
+      left: 68px;
+      z-index: 100;
+      font-size: 13px;
+      font-weight: 400;
+      color: #ffff66; }
   .is-disabled .caption-under-card {
-    color: #ffff66; }
+    visibility: hidden; }
   .is-disabled .card__description-weight {
     background-color: #b3b3b3; }
 

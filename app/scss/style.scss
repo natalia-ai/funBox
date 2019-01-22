@@ -1,13 +1,16 @@
 $font-weight-normal: 400;
 $font-weight-bold: 700;
-
-$font-exo: 'Exo2.0-Thin', Arial, sans-serif;
-$font-trebuchet: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode',
-'Lucida Sans', Tahoma, sans-serif;
-
+$font-exo: 'Exo2.0-Thin',
+Arial,
+sans-serif;
+$font-trebuchet: 'Trebuchet MS',
+'Lucida Grande',
+'Lucida Sans Unicode',
+'Lucida Sans',
+Tahoma,
+sans-serif;
 $font-title: $font-exo;
 $font-main: $font-trebuchet;
-
 $color-white: #fff;
 $color-cod-gray: #171717;
 $color-black: #000;
@@ -20,7 +23,6 @@ $color-curious-blue: #1698d9;
 $color-picton-blue: #2ea8e6;
 $color-razzmatazz: #d91667;
 $color-cerise-red: #e62e7a;
-
 $pallete-body-text: $color-white;
 $pallete-body-background: $color-cod-gray;
 $pallete-card-text-primary: $color-black;
@@ -32,11 +34,10 @@ $pallete-disabled-light: $color-mercury;
 $pallete-default: $color-curious-blue;
 $pallete-default-hover: $color-picton-blue;
 $pallete-selected: $color-razzmatazz;
-$pallete-selected-hover:  $color-cerise-red;
-
+$pallete-selected-hover: $color-cerise-red;
 html,
 body {
-  height: 100%;
+    height: 100%;
 }
 
 .page {
@@ -125,7 +126,7 @@ body {
                 border-bottom: 1px dashed $pallete-default-hover;
             }
         }
-        @media  screen and (min-width: 768px) {
+        @media screen and (min-width: 768px) {
             margin: 0 auto;
         }
     }
@@ -274,95 +275,112 @@ body {
 
 .is-selected {
     .card {
-      & .card__description-background {
-        stroke: $pallete-selected;
-      }
-  
-      .card__description-weight {
-        background-color: $pallete-selected;
-      }
-  
-      &:hover {
-        .card__caption-default {
-          display: none;
+        &::after {
+            content: attr(data-selected);
+            position: absolute;
+            width: 320px;
+            margin: 0;
+            margin-left: -160px;
+            top: 495px;
+            left: 50%;
+            z-index: 100;
+            font-size: 13px;
+            text-align: center;
+            font-weight: $font-weight-normal;
+            color: $pallete-body-text;
         }
-  
-        .card__caption-selected {
-          display: block;
+        & .card__description-background {
+            stroke: $pallete-selected;
         }
-  
-        .card__description-background {
-          stroke: $pallete-selected-hover;
-        }
-  
         .card__description-weight {
-          background-color: $pallete-selected-hover;
+            background-color: $pallete-selected;
         }
-      }
-    }
-  }
-
-
-  .is-selected-hover {
-    .card {
-      &::before {
-        content: "Котэ не одобряет?";
-        display: none;
-        margin: 0;
-        margin-bottom: 7px;
-        z-index: 1;
-        font-size: 16px;
-        color: $pallete-selected-hover;
-        box-sizing: border-box;
-      }
-    }
-  
-    &:hover {
-      .card__caption {
-        display: none;
-      }
-  
-      .card {
-        &::before {
-          display: block;
+        &:hover {
+            .card__caption-default {
+                display: none;
+            }
+            .card__caption-selected {
+                display: block;
+            }
+            .card__description-background {
+                stroke: $pallete-selected-hover;
+            }
+            .card__description-weight {
+                background-color: $pallete-selected-hover;
+            }
         }
-      }
     }
-  }
-
-  .is-disabled {
-    pointer-events: none;
-  
-    & .card__description-background {
-      stroke: $pallete-disabled-dark;
-      fill: $pallete-disabled-light;
-    }
-  
-    & .card {
-      cursor: default;
-  
-      &::before {
-        content: "";
-        position: absolute;
-        top: 4px;
-        right: 4px;
-        bottom: 4px;
-        left: 4px;
-        background-color: $pallete-disabled-light;
-        border-radius: 10px;
-        border-top-left-radius: 83px;
-        opacity: 0.6;
-      }
-    }
-  
     & .caption-under-card {
-      color: $pallete-disabled-text;
+        visibility: hidden;
+        height: 0;
+        margin-top: 8px;
     }
-  
+}
+
+.is-selected-hover {
+    .card {
+        &::before {
+            content: "Котэ не одобряет?";
+            display: none;
+            margin: 0;
+            margin-bottom: 7px;
+            z-index: 1;
+            font-size: 16px;
+            color: $pallete-selected-hover;
+            box-sizing: border-box;
+        }
+    }
+    &:hover {
+        .card__caption {
+            display: none;
+        }
+        .card {
+            &::before {
+                display: block;
+            }
+        }
+    }
+}
+
+.is-disabled {
+    pointer-events: none;
+    & .card__description-background {
+        stroke: $pallete-disabled-dark;
+        fill: $pallete-disabled-light;
+    }
+    & .card {
+        cursor: default;
+        &::before {
+            content: "";
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            bottom: 4px;
+            left: 4px;
+            background-color: $pallete-disabled-light;
+            border-radius: 10px;
+            border-top-left-radius: 83px;
+            opacity: 0.6;
+        }
+        &::after {
+            content: attr(data-disabled);
+            position: absolute;
+            top: 495px;
+            left: 68px;
+            z-index: 100;
+            font-size: 13px;
+            font-weight: $font-weight-normal;
+            color: $pallete-disabled-text;
+        }
+    }
+
+    & .caption-under-card {
+        visibility: hidden;
+    }
     & .card__description-weight {
-      background-color:  $pallete-disabled-dark;
+        background-color: $pallete-disabled-dark;
     }
-  }
+}
 
 @font-face {
     font-family: "Exo2.0-Thin";
