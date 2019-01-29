@@ -101,7 +101,34 @@ body {
     }
 }
 
-.card-box-wrapper {
+.card-box {
+    &__make-your-pet-happy {
+        max-width: 265px;
+        margin: 0 auto;
+        padding-left: 56px;
+        font-weight: $font-weight-normal;
+        font-size: 13px;
+        line-height: 16px;
+        color: $pallete-body-text;
+        text-align: left;
+    }
+    &__description {
+        position: relative;
+        &::after {
+            content: attr(data-selected);
+            position: absolute;
+            width: 320px;
+            margin: 0;
+            margin-left: -160px;
+            top: -33px;
+            left: 50%;
+            z-index: 100;
+            font-size: 13px;
+            text-align: center;
+            font-weight: $font-weight-normal;
+            color: $pallete-body-text;
+        }
+    }
     &:last-child:nth-child(odd) {
         grid-column: 1 / 3;
         @media (min-width: 1200px) {
@@ -110,13 +137,10 @@ body {
     }
 }
 
-.card-box {
+.card-wrapper {
     width: 100%;
     max-width: 320px;
-    display: flex;
-    flex-direction: column;
     margin: 0 auto;
-    padding-bottom: 20px;
     &:hover {
         .card__background {
             stroke: $pallete-default-hover;
@@ -124,9 +148,11 @@ body {
         .card__weight {
             background-color: $pallete-default-hover;
         }
-        .card-heading__to-buy {
-            color: $pallete-default-hover;
-            border-bottom: 1px dashed $pallete-default-hover;
+        .card__checkbox {
+            &::before {
+                color: $pallete-default-hover;
+                border-bottom: 1px dashed $pallete-default-hover;
+            }
         }
     }
     @media screen and (min-width: 768px) {
@@ -134,15 +160,30 @@ body {
     }
 }
 
-.card-heading {
-    margin: 10px 0;
-    margin-top: 13px;
-    font-weight: $font-weight-normal;
-    font-size: 13px;
-    line-height: 16px;
-    color: $pallete-body-text;
-    text-align: center;
-    order: 2;
+.card__checkbox {
+    position: relative;
+    &::before {
+        content: "купи";
+        position: absolute;
+        top: 23px;
+        left: 183px;
+        font-size: 13px;
+        line-height: 16px;
+        font-weight: $font-weight-bold;
+        color: $pallete-default;
+        text-decoration: none;
+        border-bottom: 1px dashed $pallete-default;
+        cursor: pointer;
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        top: 33px;
+        left: 213px;
+        width: 2px;
+        height: 2px;
+        background-color: $pallete-default;
+    }
 }
 
 .card {
@@ -230,26 +271,6 @@ body {
     }
 }
 
-.card-heading__to-buy {
-    font-size: 13px;
-    line-height: 16px;
-    font-weight: $font-weight-bold;
-    color: $pallete-default;
-    text-decoration: none;
-    border-bottom: 1px dashed $pallete-default;
-    cursor: pointer;
-    position: relative;
-    &::after {
-        content: "";
-        position: absolute;
-        top: 10px;
-        left: 31px;
-        width: 2px;
-        height: 2px;
-        background-color: $pallete-default;
-    }
-}
-
 .form {
     font-family: $font-main;
     font-size: 16px;
@@ -269,20 +290,6 @@ body {
 
 .is-selected {
     .card {
-        &::after {
-            content: attr(data-selected);
-            position: absolute;
-            width: 320px;
-            margin: 0;
-            margin-left: -160px;
-            top: 495px;
-            left: 50%;
-            z-index: 100;
-            font-size: 13px;
-            text-align: center;
-            font-weight: $font-weight-normal;
-            color: $pallete-body-text;
-        }
         & .card__background {
             stroke: $pallete-selected;
         }
@@ -304,10 +311,13 @@ body {
             }
         }
     }
-    & .card-heading {
-        visibility: hidden;
-        height: 0;
-        margin-top: 29px;
+    .card__checkbox {
+        &::before,
+        &::after {
+            visibility: hidden;
+            height: 0;
+            margin-top: 29px;
+        }
     }
 }
 
@@ -342,7 +352,7 @@ body {
         stroke: $pallete-disabled-dark;
         fill: $pallete-disabled-light;
     }
-    & .card {
+    .card {
         cursor: default;
         &::before {
             content: "";
@@ -371,10 +381,13 @@ body {
             color: $pallete-disabled-text;
         }
     }
-    & .card-heading {
-        visibility: hidden;
+    .card__checkbox {
+        &::before,
+        &::after {
+            visibility: hidden;
+        }
     }
-    & .card__weight {
+    .card__weight {
         background-color: $pallete-disabled-dark;
     }
 }

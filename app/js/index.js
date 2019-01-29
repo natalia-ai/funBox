@@ -1,20 +1,19 @@
 'use strict';
 (function () {
 var ELEMENT_N = 3;
-var cardTemplate = $('#template-card').children('.card-box-wrapper'),
+var cardTemplate = $('#template-card').children('.card-box'),
   cardsContainer = $('.page__cards-box'),
   renderedCards = [];
 
 var cardIds = ['templateId-1', 'templateId-2', 'templateId-3'];
-var cardHeadings = ['Печень утки разварная с артишоками', 'Головы щучьи с чесноком да свежайшая сёмгушка', 'Филе из цыплят с трюфелями в бульоне'];
-var productTitles = ['Нямушка'];
+var cardBoxDescriptions = ['Печень утки разварная с артишоками', 'Головы щучьи с чесноком да свежайшая сёмгушка', 'Филе из цыплят с трюфелями в бульоне'];
 var productAdditives = ['с фуа-гра', 'с рыбой', 'с курой'];
 var numberOfPortions = ['10', '40', '100'];
 var numbersForDeclensionOfPortions = ['10', '40', '100'];
 var numberOfBonuses = ['', '2', '5'];
 var numbersForDeclensionOfBonuses = ['1', '2', '5'];
 var productWeights = ['0,5', '2', '5'];
-var inputNames = ['foiegras', 'fish', 'chicken'];
+var inputAttributes = ['foiegras', 'fish', 'chicken'];
 
 function makeObject() {
   var objectArray = Array(ELEMENT_N);
@@ -22,15 +21,14 @@ function makeObject() {
     var objectTemplate = {};
 
     objectTemplate.cardId = cardIds[i];
-    objectTemplate.cardHeading = cardHeadings[i] + '.';
-    objectTemplate.title = productTitles;
+    objectTemplate.cardBoxDescription = cardBoxDescriptions[i] + '.';
     objectTemplate.additive = productAdditives[i];
     objectTemplate.portion = numberOfPortions[i];
     objectTemplate.bonus = numberOfBonuses[i];
     objectTemplate.numberForDeclensionOfPortions = numbersForDeclensionOfPortions[i];
     objectTemplate.numberForDeclensionOfBonuses = numbersForDeclensionOfBonuses[i];
     objectTemplate.weight = productWeights[i];
-    objectTemplate.inputName = inputNames[i];
+    objectTemplate.inputAttribute = inputAttributes[i];
     objectArray[i] = objectTemplate;
   }
   return objectArray;
@@ -38,9 +36,9 @@ function makeObject() {
 
 function createCard(product) {
   var card = cardTemplate.clone().appendTo($('.form'));
+  var input = $('input');
   cardTemplate.remove();
   $('.card-box').attr("id", product.cardId);
-  $('.card__title').text(product.title);
   $('.card__subtitle').text(product.additive);
   $('.card__text--portion').prepend('<b>' + product.portion + '</b>' + declineNouns(product.numberForDeclensionOfPortions, [' порция', ' порции', ' порций']));
   var bonus = $('.card__text--bonus');
@@ -52,10 +50,10 @@ function createCard(product) {
   }
 
   $('.card__weight').prepend(product.weight);
-  $('input').prop('name', product.inputName);
-  $('label').prop('for', product.inputId);
+  input.prop('name', product.inputAttribute);
+  input.prop('value', product.inputAttribute);
   $('.card').attr('data-disabled', 'Печалька,' + product.additive + ' закончился.');
-  $('.card').attr('data-selected', product.cardHeading);
+  $('.card-box__description').attr('data-selected', product.cardBoxDescription);
   return card;
 };
 
@@ -73,29 +71,51 @@ function renderCards(data) {
   cardsContainer.append(fragment);
   disableCard('input:checkbox[name="chicken"]', '#templateId-3');
   selectCard('input:checkbox[name="fish"]', '#templateId-2'); 
+  defoultCard('input:checkbox[name="foiegras"]', '#templateId-1');
 };
 
 function disableCard(inputName, cardId) {
   if ($(inputName).prop('disabled', true)) {
     $(cardId).addClass('is-disabled');
+    $(cardId).children('.card-box__description').css('visibility', 'hidden');
+    $(cardId).children('.card-box__make-your-pet-happy').css('visibility', 'hidden');
   }
 };
 
 function selectCard(inputName, cardId) {
   if ($(inputName).prop('selected', true)) {
     $(cardId).addClass('is-selected');
-  }
+    $(cardId).children('.card-box__description').css('visibility', 'visible');
+    $(cardId).children('.card-box__make-your-pet-happy').css('visibility', 'hidden');
+    $(cardId).find('input').prop('checked', true);
+  } 
+};
+
+function defoultCard(inputName, cardId) {
+  if ($(inputName).prop('selected', false)) {
+    $(cardId).children('.card-box__description').css('visibility', 'hidden');
+    $(cardId).children('.card-box__make-your-pet-happy').css('visibility', 'visible');
+  } 
 };
 
 $(cardsContainer).on('click', 'section[id^="templateId-"]', statusClickHandler);
 
 function statusClickHandler(event) {
+  var checkbox =  $(this).find('input'),
+  description = $(this).children('.card-box__description'),
+  makeYourPetHappy = $(this).children('.card-box__make-your-pet-happy');
   event.preventDefault();
   if ($(this).hasClass('is-selected')) {
     $(this).removeClass('is-selected');
     $(this).removeClass('is-selected-hover');
+    $(description).css('visibility', 'hidden');
+    $(makeYourPetHappy).css('visibility', 'visible');
+    $(checkbox).prop('checked', false);
   } else {
     $(this).addClass('is-selected');
+    $(description).css('visibility', 'visible');
+    $(makeYourPetHappy).css('visibility', 'hidden');
+    $(checkbox).prop('checked', true);
   }
 };
 
