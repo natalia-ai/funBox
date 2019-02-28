@@ -108,7 +108,7 @@ body {
         padding-left: 56px;
         font-weight: $font-weight-normal;
         font-size: 13px;
-        line-height: 16px;
+        line-height: 15px;
         color: $pallete-body-text;
         text-align: left;
     }
@@ -140,7 +140,8 @@ body {
 .card-wrapper {
     width: 100%;
     max-width: 320px;
-    margin: 0 auto;
+    margin: 0 auto 17px;
+    position: relative;
     &:hover {
         .card__background {
             stroke: $pallete-default-hover;
@@ -148,27 +149,23 @@ body {
         .card__weight {
             background-color: $pallete-default-hover;
         }
-        .card__checkbox {
+        .card-checkbox {
             &::before {
                 color: $pallete-default-hover;
                 border-bottom: 1px dashed $pallete-default-hover;
             }
         }
     }
-    @media screen and (min-width: 768px) {
-        margin: 0 auto;
-    }
 }
 
-.card__checkbox {
-    position: relative;
+.card-checkbox {
     &::before {
         content: "купи";
         position: absolute;
-        top: 23px;
-        left: 183px;
+        bottom: -32px;
+        left: 230px;
         font-size: 13px;
-        line-height: 16px;
+        line-height: 12px;
         font-weight: $font-weight-bold;
         color: $pallete-default;
         text-decoration: none;
@@ -178,8 +175,8 @@ body {
     &::after {
         content: "";
         position: absolute;
-        top: 33px;
-        left: 213px;
+        bottom: -30px;
+        left: 260px;
         width: 2px;
         height: 2px;
         background-color: $pallete-default;
@@ -310,13 +307,12 @@ body {
                 background-color: $pallete-selected-hover;
             }
         }
-    }
-    .card__checkbox {
-        &::before,
-        &::after {
-            visibility: hidden;
-            height: 0;
-            margin-top: 29px;
+        &-checkbox {
+            &::before,
+            &::after {
+                visibility: hidden;
+                height: 0; //  margin-top: 29px;
+            }
         }
     }
 }
@@ -352,6 +348,12 @@ body {
         stroke: $pallete-disabled-dark;
         fill: $pallete-disabled-light;
     }
+    .card-checkbox {
+        &::before,
+        &::after {
+            visibility: hidden;
+        }
+    }
     .card {
         cursor: default;
         &::before {
@@ -379,12 +381,6 @@ body {
             text-align: center;
             font-weight: $font-weight-normal;
             color: $pallete-disabled-text;
-        }
-    }
-    .card__checkbox {
-        &::before,
-        &::after {
-            visibility: hidden;
         }
     }
     .card__weight {

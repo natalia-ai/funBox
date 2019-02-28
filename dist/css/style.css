@@ -80,7 +80,7 @@ body {
   padding-left: 56px;
   font-weight: 400;
   font-size: 13px;
-  line-height: 16px;
+  line-height: 15px;
   color: #fff;
   text-align: left; }
 
@@ -109,40 +109,37 @@ body {
 .card-wrapper {
   width: 100%;
   max-width: 320px;
-  margin: 0 auto; }
+  margin: 0 auto 17px;
+  position: relative; }
   .card-wrapper:hover .card__background {
     stroke: #2ea8e6; }
   .card-wrapper:hover .card__weight {
     background-color: #2ea8e6; }
-  .card-wrapper:hover .card__checkbox::before {
+  .card-wrapper:hover .card-checkbox::before {
     color: #2ea8e6;
     border-bottom: 1px dashed #2ea8e6; }
-  @media screen and (min-width: 768px) {
-    .card-wrapper {
-      margin: 0 auto; } }
 
-.card__checkbox {
-  position: relative; }
-  .card__checkbox::before {
-    content: "купи";
-    position: absolute;
-    top: 23px;
-    left: 183px;
-    font-size: 13px;
-    line-height: 16px;
-    font-weight: 700;
-    color: #1698d9;
-    text-decoration: none;
-    border-bottom: 1px dashed #1698d9;
-    cursor: pointer; }
-  .card__checkbox::after {
-    content: "";
-    position: absolute;
-    top: 33px;
-    left: 213px;
-    width: 2px;
-    height: 2px;
-    background-color: #1698d9; }
+.card-checkbox::before {
+  content: "купи";
+  position: absolute;
+  bottom: -32px;
+  left: 230px;
+  font-size: 13px;
+  line-height: 12px;
+  font-weight: 700;
+  color: #1698d9;
+  text-decoration: none;
+  border-bottom: 1px dashed #1698d9;
+  cursor: pointer; }
+
+.card-checkbox::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 260px;
+  width: 2px;
+  height: 2px;
+  background-color: #1698d9; }
 
 .card {
   position: relative;
@@ -268,10 +265,9 @@ body {
 .is-selected .card:hover .card__weight {
   background-color: #e62e7a; }
 
-.is-selected .card__checkbox::before, .is-selected .card__checkbox::after {
+.is-selected .card-checkbox::before, .is-selected .card-checkbox::after {
   visibility: hidden;
-  height: 0;
-  margin-top: 29px; }
+  height: 0; }
 
 .is-selected-hover .card::before {
   content: "Котэ не одобряет?";
@@ -295,6 +291,8 @@ body {
   .is-disabled .card__background {
     stroke: #b3b3b3;
     fill: #e4e4e4; }
+  .is-disabled .card-checkbox::before, .is-disabled .card-checkbox::after {
+    visibility: hidden; }
   .is-disabled .card {
     cursor: default; }
     .is-disabled .card::before {
@@ -323,8 +321,6 @@ body {
       text-align: center;
       font-weight: 400;
       color: #ffff66; }
-  .is-disabled .card__checkbox::before, .is-disabled .card__checkbox::after {
-    visibility: hidden; }
   .is-disabled .card__weight {
     background-color: #b3b3b3; }
 
