@@ -159,10 +159,9 @@ body {
 }
 
 .card-checkbox {
-    &::before {
-        content: "купи";
+    &__to-bue {
         position: absolute;
-        bottom: -32px;
+        bottom: -31px;
         left: 230px;
         font-size: 13px;
         line-height: 12px;
@@ -171,15 +170,15 @@ body {
         text-decoration: none;
         border-bottom: 1px dashed $pallete-default;
         cursor: pointer;
-    }
-    &::after {
-        content: "";
-        position: absolute;
-        bottom: -30px;
-        left: 260px;
-        width: 2px;
-        height: 2px;
-        background-color: $pallete-default;
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 2px;
+            left: 30px;
+            width: 2px;
+            height: 2px;
+            background-color: $pallete-default;
+        }
     }
 }
 
