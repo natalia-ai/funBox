@@ -4,9 +4,11 @@
 
 ---
 Q_1
-# <a href="https://github.com/natalia-ai/funBox/Q_funbox_Ivanova.docx">Ответы к первой части задания</a>
-
+---
+### <a href="https://github.com/natalia-ai/funBox/blob/master/Q_funbox_Ivanova.pdf">Ответы к первой части задания</a>
+---
 Q_2
+---
 _Описание:_<br>
 ### Браузеры: 
 Chrome, Firefox, Opera, Safari, IE11;  
